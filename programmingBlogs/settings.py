@@ -16,12 +16,14 @@ SECRET_KEY = 'django-insecure-y28#z%5#ae#gz22k#jlmdjj4n1^asc-j6^(nm-z+1h=(h^l_-r
 DEBUG = False
 # https://programmingblogs.herokuapp.com/
 ALLOWED_HOSTS = ['127.0.0.1','10.0.2.2','programmingblogs.herokuapp.com']
+CORS_ORIGIN_ALLOW_ALL = True
 
 
 # Application definition
 
 INSTALLED_APPS = [
     'Api',
+    'corsheaders',
     'knox',
     'rest_framework',
     'django.contrib.admin',
@@ -33,6 +35,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
