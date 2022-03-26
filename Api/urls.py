@@ -8,7 +8,7 @@ from django.conf.urls.static import static
 from django.conf import settings
 from .views import RegisterAPI
 from knox import views as knox_views
-from .views import LoginAPI
+from .views import LoginAPI,FindPost
 
 
 routers=DefaultRouter()
@@ -19,6 +19,7 @@ routers.register('category',CategoryViewSet,basename='category')
 routers.register('post',PostViewset,basename='post')
 
 urlpatterns = [
+    path('fp/',FindPost.as_view()),
     path('cat/',include(routers.urls),),
     path('',PostView.as_view()),
     

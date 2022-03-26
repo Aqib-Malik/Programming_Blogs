@@ -10,6 +10,14 @@ from rest_framework.authentication import TokenAuthentication
 from rest_framework import viewsets
 from rest_framework import generics, permissions
 from knox.models import AuthToken
+from rest_framework.filters import SearchFilter
+
+class FindPost(generics.ListAPIView):
+    queryset = Post.objects.all()
+    serializer_class = PostSerializer
+   
+    filter_backends=[SearchFilter]
+    search_fields = ['^title','^content']
 
 class ProfileViewset(viewsets.ModelViewSet):
     queryset=Profile.objects.all()
