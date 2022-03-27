@@ -17,7 +17,7 @@ class FindPost(generics.ListAPIView):
     serializer_class = PostSerializer
    
     filter_backends=[SearchFilter]
-    search_fields = ['^title','^content']
+    search_fields = ['title']
 
 class ProfileViewset(viewsets.ModelViewSet):
     queryset=Profile.objects.all()
